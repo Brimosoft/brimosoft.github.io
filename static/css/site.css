@@ -335,3 +335,37 @@ ul.mini svg { width: 18px; height: 18px; color: var(--green); flex: none; }
 .tiers thead th.hot { background: #1565c0; }
 .tiers tbody th { width: 120px; color: var(--muted); font-weight: 700; }
 .tiers td.hot { background: #f4f8fe; font-weight: 700; color: var(--ink); }
+
+/* ---- a light streak crossing the main buttons, from the bottom right to the top left, every few seconds */
+.btn-primary { position: relative; overflow: hidden; isolation: isolate; }
+.btn-primary::after { content: ""; position: absolute; z-index: -1; pointer-events: none; width: 38%; height: 300%; top: 0; left: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.75) 50%, transparent); transform: translate(260%, 40%) rotate(35deg);
+  animation: btn-shine 3.6s ease-in-out infinite; }
+.btn-primary > * { position: relative; }
+.cta .btn-primary::after { background: linear-gradient(90deg, transparent, rgba(21, 101, 192, 0.18), transparent); }
+@keyframes btn-shine {
+  0% { transform: translate(260%, 40%) rotate(35deg); }
+  45%, 100% { transform: translate(-160%, -110%) rotate(35deg); }
+}
+@media (prefers-reduced-motion: reduce) { .btn-primary::after { animation: none; display: none; } }
+
+/* ---- the WhatsApp button: a glowing ring, and a greeting that pops out of it */
+.wa-float { isolation: isolate; }
+.wa-float::before, .wa-float::after { content: ""; position: absolute; inset: 0; border-radius: 50%; z-index: -1;
+  background: #25d366; animation: wa-ring 2.4s ease-out infinite; }
+.wa-float::after { animation-delay: 1.2s; }
+@keyframes wa-ring { 0% { transform: scale(1); opacity: 0.55; } 100% { transform: scale(1.9); opacity: 0; } }
+.wa-hello { position: fixed; bottom: 92px; inset-inline-start: 22px; z-index: 61; width: 310px; max-width: calc(100vw - 44px);
+  background: #fff; border-radius: 16px; box-shadow: 0 14px 40px rgba(15, 23, 42, 0.22); border: 1px solid var(--line);
+  opacity: 0; transform: translateY(12px) scale(0.96); transform-origin: bottom; transition: opacity 0.3s, transform 0.3s; }
+.wa-hello.show { opacity: 1; transform: none; }
+.wa-hello::after { content: ""; position: absolute; bottom: -8px; inset-inline-start: 22px; width: 16px; height: 16px; background: #fff;
+  border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); transform: rotate(45deg); }
+.wa-hello a { display: flex; gap: 12px; align-items: center; padding: 14px 16px 14px 16px; color: var(--ink); }
+.wa-hello img { width: 40px; height: 40px; border-radius: 11px; flex: none; }
+.wa-hello span { display: flex; flex-direction: column; font-size: 15px; line-height: 1.5; padding-inline-end: 14px; }
+.wa-hello b { font-size: 16px; color: #0a2f78; }
+.wa-hello-x { position: absolute; top: 4px; inset-inline-end: 6px; z-index: 1; width: 26px; height: 26px; border: none; background: none;
+  font-size: 20px; line-height: 1; color: var(--muted); cursor: pointer; border-radius: 50%; }
+.wa-hello-x:hover { background: var(--blue-softer); color: var(--ink); }
+@media (prefers-reduced-motion: reduce) { .wa-float::before, .wa-float::after { animation: none; display: none; } .wa-hello { transition: none; } }

@@ -49,6 +49,23 @@
       btn.setAttribute("aria-expanded", open ? "true" : "false");
     });
   });
+  // The WhatsApp greeting: pops out of the button after a few seconds, once per visit (closing it keeps it closed).
+  var hello = document.getElementById("wa-hello"), KEY = "brimo-wa-hello";
+  var seen = false;
+  try { seen = sessionStorage.getItem(KEY) === "1"; } catch (e) {}
+  if (hello && !seen) {
+    setTimeout(function () {
+      hello.hidden = false;
+      requestAnimationFrame(function () { hello.classList.add("show"); });
+    }, 3000);
+    var done = function () {
+      hello.classList.remove("show");
+      setTimeout(function () { hello.hidden = true; }, 300);
+      try { sessionStorage.setItem(KEY, "1"); } catch (e) {}
+    };
+    document.getElementById("wa-hello-x").addEventListener("click", done);
+    hello.querySelector("a").addEventListener("click", done);
+  }
   document.addEventListener("click", function () {
     document.querySelectorAll(".nav-group.open").forEach(function (g) {
       g.classList.remove("open");
