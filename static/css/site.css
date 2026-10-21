@@ -386,3 +386,38 @@ ul.mini svg { width: 18px; height: 18px; color: var(--green); flex: none; }
   .trade .icon-box { width: 38px; height: 38px; }
   .trade .icon-box svg { width: 22px; height: 22px; }
 }
+
+/* ---- phones: tidy, full-width actions; the WhatsApp button smaller and never hiding the last lines */
+@media (max-width: 620px) {
+  .hero-actions { flex-direction: column; align-items: stretch; }
+  .hero-actions .btn { justify-content: center; }
+  .product .body { padding: 20px 18px 22px; }
+  .product .title-row { flex-direction: column; align-items: flex-start; gap: 6px; }
+  .product h3 { font-size: 21px; }
+  .product .actions .btn { flex: 1 1 130px; justify-content: center; white-space: nowrap; padding-inline: 10px; }
+  .price-from { padding: 14px 18px; gap: 4px 10px; }
+  .price-from b { font-size: 42px; }
+  .price-from span { font-size: 17px; }
+  .wa-float { width: 50px; height: 50px; bottom: 16px; inset-inline-start: 16px; }
+  .wa-float svg { width: 27px; height: 27px; }
+  .wa-hello { bottom: 80px; inset-inline-start: 16px; }
+  .site-footer { padding-bottom: 76px; }
+}
+
+.tier-cards { display: none; }
+@media (max-width: 620px) {
+  .tiers { display: none; }
+  .tier-cards { display: grid; gap: 14px; }
+  .tier-card { background: #fff; border: 1px solid var(--line); border-radius: 18px; overflow: hidden; }
+  .tier-card h3 { margin: 0; padding: 12px 18px; background: #0a2f78; color: #fff; font-size: 19px; }
+  .tier-card.hot { border: 2px solid var(--blue); }
+  .tier-card.hot h3 { background: #1565c0; }
+  .tier-card dl { margin: 0; padding: 6px 18px 12px; }
+  .tier-card dt { margin-top: 10px; font-size: 13.5px; font-weight: 700; color: var(--muted); }
+  .tier-card dd { margin: 2px 0 0; font-size: 16px; font-weight: 700; color: var(--ink); }
+}
+@media (max-width: 620px) {
+  .person .actions { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+  .person .actions .btn { justify-content: center; padding-inline: 6px; gap: 6px; white-space: nowrap; font-size: 14px; }
+  .person .actions .btn svg { display: none; }
+}
