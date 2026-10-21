@@ -421,3 +421,8 @@ ul.mini svg { width: 18px; height: 18px; color: var(--green); flex: none; }
   .person .actions .btn { justify-content: center; padding-inline: 6px; gap: 6px; white-space: nowrap; font-size: 14px; }
   .person .actions .btn svg { display: none; }
 }
+
+/* ---- the program cards: the name, then its description as a small label on one line, on every screen */
+.product .title-row { flex-direction: column; align-items: flex-start; gap: 8px; }
+.product .title-row .pill { white-space: nowrap; font-size: 13.5px; padding: 4px 12px; line-height: 1.6; }
+.product h3 { line-height: 1.35; }
