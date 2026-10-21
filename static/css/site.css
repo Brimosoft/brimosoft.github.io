@@ -369,3 +369,20 @@ ul.mini svg { width: 18px; height: 18px; color: var(--green); flex: none; }
   font-size: 20px; line-height: 1; color: var(--muted); cursor: pointer; border-radius: 50%; }
 .wa-hello-x:hover { background: var(--blue-softer); color: var(--ink); }
 @media (prefers-reduced-motion: reduce) { .wa-float::before, .wa-float::after { animation: none; display: none; } .wa-hello { transition: none; } }
+
+/* ---- phones: nothing wider than the screen */
+.aff-big { flex-wrap: wrap; justify-content: center; max-width: 100%; }
+.trades { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.trade b { min-width: 0; }
+@media (max-width: 1000px) { .trades { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 620px) {
+  .aff-big { gap: 6px 10px; padding: 14px 18px; }
+  .aff-big b { font-size: 40px; }
+  .aff-big span { font-size: 16px; }
+  .aff-big b + span { margin-inline-end: 0; }
+  .aff-big span + b { margin-inline-start: 14px; }
+  .trades { gap: 10px; }
+  .trade { flex-direction: column; gap: 8px; padding: 14px 8px; font-size: 16px; text-align: center; }
+  .trade .icon-box { width: 38px; height: 38px; }
+  .trade .icon-box svg { width: 22px; height: 22px; }
+}
